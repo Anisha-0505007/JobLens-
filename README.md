@@ -1,5 +1,7 @@
 # JobLens
 
+**[🚀 View Live Demo](https://job-lens-five.vercel.app/)**
+
 JobLens is a smart, modern job application tracker designed to help job seekers stay organized and focused. It provides a comprehensive dashboard to log job applications, monitor changing statuses (from "Applied" to "Interviewing" and "Offers"), and view insightful analytics on your job search progress. With a sleek dark-themed UI, responsive design, and interactive charts, JobLens turns the chaotic job hunt into a structured, trackable process.
 
 ## 🚀 Features
