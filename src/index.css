@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..700;1,14..32,300..700&display=swap');
+@import "tailwindcss";
+@source "../src";
+
+
+/* ─── Design Tokens ─────────────────────────────────────── */
+:root {
+  /* Backgrounds — layered depth like LinkedIn */
+  --bg: #1b1f2e;
+  --bg-surface: #24273a;
+  --bg-card: #252a3d;
+  --bg-card-alt: #2a2f45;
+  --bg-hover: #2e3450;
+  --bg-input: #1e2235;
+
+  /* Borders */
+  --border: rgba(255, 255, 255, 0.07);
+  --border-focus: rgba(108, 99, 255, 0.5);
+
+  /* Text */
+  --text: #b0b8d0;
+  --text-muted: #606880;
+  --text-h: #e8edf8;
+  --text-subtle: #444d68;
+
+  /* Brand */
+  --blue: #0A84FF;
+  --blue-dim: rgba(10, 132, 255, 0.12);
+  --accent: #6c63ff;
+  --accent-dim: rgba(108, 99, 255, 0.12);
+  --green: #22c55e;
+  --green-dim: rgba(34, 197, 94, 0.12);
+  --amber: #f59e0b;
+  --amber-dim: rgba(245, 158, 11, 0.12);
+  --red: #ef4444;
+  --red-dim: rgba(239, 68, 68, 0.12);
+
+  /* Shadows */
+  --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.55);
+
+  /* Shape */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+
+  /* Layout */
+  --nav-h: 60px;
+
+  /* Typography */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  color-scheme: dark;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Reset ─────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100dvh;
+  margin: 0;
+  /* Premium dynamic moving gradient background (Rich & Colorful) */
+  background: linear-gradient(-45deg,
+      #2a0a3a,
+      /* Deep Magenta/Purple */
+      #0f172a,
+      /* Deep Slate */
+      #1e1b4b,
+      /* Deep Indigo */
+      #312e81
+      /* Rich Violet */
+    );
+  background-size: 400% 400%;
+  animation: bgDrift 20s ease infinite;
+  background-attachment: fixed;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img,
+svg {
+  display: block;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-subtle);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ─── Keyframes ──────────────────────────────────────────── */
+@keyframes bgDrift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes glowPulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 12px 2px rgba(108, 99, 255, 0.25);
+  }
+
+  50% {
+    box-shadow: 0 0 28px 6px rgba(108, 99, 255, 0.5);
+  }
+}
+
+@keyframes floatOrb {
+
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-24px) scale(1.06);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes borderGlow {
+
+  0%,
+  100% {
+    border-color: rgba(108, 99, 255, 0.2);
+  }
+
+  50% {
+    border-color: rgba(108, 99, 255, 0.6);
+  }
+}
+
+/* ─── Animated primary button ────────────────────────────── */
+.btn-primary {
+  background: linear-gradient(110deg,
+      #6c63ff 0%,
+      #9b5de5 35%,
+      #6c63ff 60%,
+      #0A84FF 100%);
+  background-size: 250% auto;
+  animation: shimmer 3.5s linear infinite;
+  box-shadow: 0 2px 16px rgba(108, 99, 255, 0.35);
+  transition: transform 0.18s, box-shadow 0.18s, opacity 0.18s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 28px rgba(108, 99, 255, 0.55);
+  opacity: 0.95;
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+/* Ensure root content is positioned properly */
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Card hover ───────────────────────────────────────── */
+.card {
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+/* ─── Stat cards ────────────────────────────────────────── */
+.stat-card {
+  animation: fadeUp 0.4s ease both;
+}
+
+.stat-card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-focus) !important;
+}
+
+
+/* ─── Job table rows ─────────────────────────────────────── */
+.jobs-row {
+  animation: fadeUp 0.3s ease both;
+}
+
+/* ─── Navbar logo subtle glow ────────────────────────────── */
+.nav-logo {
+  filter: drop-shadow(0 0 8px rgba(108, 99, 255, 0.5));
+}
+
+/* ─── Active nav item indicator glow ────────────────────── */
+.nav-link.active::after {
+  box-shadow: 0 0 8px rgba(108, 99, 255, 0.7);
+}
+
+/* ─── Kanban card glow on hover ──────────────────────────── */
+.kb-card:hover {
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(108, 99, 255, 0.3);
+}
+
+/* ─── Input focus glow ───────────────────────────────────── */
+.form-input:focus {
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.18);
+}
